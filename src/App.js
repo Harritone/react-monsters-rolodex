@@ -18,10 +18,11 @@ class App extends Component {
         return response.json();
       })
       .then((users) => {
-        const monsters = users.map(({ name, id }) => {
+        const monsters = users.map(({ name, id, email }) => {
           return {
             id,
             name,
+            email,
           };
         });
         this.setState(() => {
@@ -52,10 +53,11 @@ class App extends Component {
 
     return (
       <div className="App">
+        <h1 className="app-title">Monsters Rolodex</h1>
         <SearchBox
           onChangeHandler={onSearchChange}
           placeholder="search monsters"
-          className="search-box"
+          className="monsters-search-box"
         />
         <CardList monsters={filteredMonsters} />
       </div>
